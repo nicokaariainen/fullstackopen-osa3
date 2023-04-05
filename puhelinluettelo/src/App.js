@@ -81,6 +81,10 @@ const App = () => {
       .then(() => {
         notify(`Successfully added ${personObj.name} to the phonebook.`, false)
       })
+      .catch(error => {
+        notify(`Person missing name or number.`, true)
+      })
+
   }
 
   const deletePerson = (id) => {
