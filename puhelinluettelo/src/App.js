@@ -49,10 +49,15 @@ const App = () => {
         notify(`Successfully edited ${changedPerson.name} in the phonebook.`, false)
       })
       .catch(error => {
-        notify(`Information of ${changedPerson.name} has already been removed from server.`, true)
-        setPersons(persons.filter(person => person.id !== changedPerson.id))
-        setNewName('')
-        setNewNumber('')
+        console.log(error)
+        if (error.response.status === 404) {
+          notify(`Information was already deleted from the server.`, true)
+          setPersons(persons.filter(person => person.id !== changedPerson.id))
+          setNewName('')
+          setNewNumber('')
+        } else {
+          notify(`${error.response.data.error}`, true)
+        }
       })
   }
 
@@ -82,7 +87,7 @@ const App = () => {
         notify(`Successfully added ${personObj.name} to the phonebook.`, false)
       })
       .catch(error => {
-        notify(`Person missing name or number.`, true)
+        notify(`${error.response.data.error}`, true)
       })
 
   }

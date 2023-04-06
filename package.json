@@ -10,11 +10,13 @@
     "build:ui": "rmdir /s build && cd puhelinluettelo && npm run build && xcopy build ..\\build /E/H/I",
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "logs:prod": "fly logs"
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
   },
   "author": "Nico Kääriäinen",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.37.0",
     "nodemon": "^2.0.22"
   },
   "dependencies": {
