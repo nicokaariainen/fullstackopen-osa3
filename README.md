@@ -1,3 +1,3 @@
 Linkki sovellukseen:
 
-https://autumn-waterfall-942.fly.dev/
+https://fullstackopen-osa3-xi76xw.fly.dev/
