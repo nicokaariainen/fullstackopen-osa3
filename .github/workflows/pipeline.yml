@@ -30,6 +30,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Set Fly.io secrets
+        run: flyctl secrets set MONGODB_URI="${{ secrets.MONGODB_URI }}" --stage
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       - name: Deploy to fly.IO
         run: flyctl deploy --remote-only
         env:
