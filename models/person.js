@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { isValidPhoneNumber } = require('../utils/validators')
 
 mongoose.set('strictQuery', false)
 
@@ -24,9 +25,7 @@ const personSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: function(v) {
-        return /^\d{2,3}-\d{7,8}$/.test(v)
-      },
+      validator: isValidPhoneNumber,
       message: props => `${props.value} is not a valid phone number.`
     },
     minlength: 8,

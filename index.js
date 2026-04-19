@@ -80,6 +80,10 @@ app.delete('/api/persons/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
+app.get('/health', (req, res) => {
+  res.send('ok')
+})
+
 app.get('/info', (req, res) => {
   const date = new Date()
   Person.find({}).then(persons => {
