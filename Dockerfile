@@ -15,6 +15,10 @@ COPY . .
 
 RUN npm install
 
+# Build the frontend
+RUN cd puhelinluettelo && npm install && npm run build
+RUN rm -rf build && cp -r puhelinluettelo/build build
+
 
 FROM debian:bullseye-slim
 
